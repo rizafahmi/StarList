@@ -6,12 +6,27 @@ import {
   TouchableOpacity
 } from 'react-native'
 
+import Sound from 'react-native-sound'
+
 const onPressButton = (sound) => {
-  console.log(sound)
+  // const audio = require('./chewy_roar.mp3')
+  const chewySound = new Sound('chewie_chatting.wav', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+      console.log(error)
+    }
+  })
+  console.log(chewySound)
+  chewySound.play((success) => {
+    if (success) {
+      console.log(success)
+    } else {
+      console.log('error')
+    }
+  })
+  chewySound.release()
 }
 
 const StarItem = (props) => {
-  console.log(props)
   return (
     <TouchableOpacity onPress={() => onPressButton(props.sound)} style={styles.listItem}>
       <Image style={styles.listImage} source={{uri: props.imageUrl}} />
