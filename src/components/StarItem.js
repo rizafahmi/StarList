@@ -2,18 +2,23 @@ import React from 'react'
 import {
   View,
   Text,
-  Image
+  Image,
+  TouchableOpacity
 } from 'react-native'
+
+const onPressButton = (sound) => {
+  console.log(sound)
+}
 
 const StarItem = (props) => {
   console.log(props)
   return (
-    <View style={styles.listItem}>
+    <TouchableOpacity onPress={() => onPressButton(props.sound)} style={styles.listItem}>
       <Image style={styles.listImage} source={{uri: props.imageUrl}} />
       <View style={styles.listTextContainer}>
         <Text style={styles.listText}>{props.name}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 
